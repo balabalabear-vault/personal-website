@@ -4,12 +4,14 @@ import { useState } from "react";
 
 interface ICategoryLayer {
     categories: string[],
-    clickable: boolean
+    clickable?: boolean
+    tightSpacing?: boolean
 }
 
 export default function CategoryLayer({
     categories,
-    clickable,
+    clickable = false,
+    tightSpacing = false,
 }: Readonly<ICategoryLayer>) {
     const [selected, setSelected] = useState<{[key: string]: boolean}>({})
 
@@ -26,7 +28,7 @@ export default function CategoryLayer({
     }
 
     return (
-        <Stack direction="row" spacing={2} mb={2}>
+        <Stack direction="row" flexWrap="wrap" useFlexGap spacing={tightSpacing ? 1 : { xs: 1, md: 2 }} mb={2}>
             {
                 categories.map((cat) => (
                     <Chip

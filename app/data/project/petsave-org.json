@@ -1,0 +1,36 @@
+{
+    "categroy": "personal",
+    "role": "Backend Lead",
+    "timePeriod": "APR 2024 - Current",
+    "company": {
+        "name": "Petsave Org",
+        "location": "Toronto, Ontario, Canada",
+        "image": {
+            "src": "https://www.petsaveorg.com/save-pets-icon.jpeg",
+            "width": 200,
+            "height": 200
+        },
+        "homePage": {
+            "text": "Home Page",
+            "href": "https://www.petsaveorg.com/home"            
+        }
+    },
+    "backend": [
+        "Node",
+        "Nest",
+        "RESTful API",
+        "OpenAPI Specification",
+        "Jest"
+    ],
+    "database": [
+        "PostgreSql",
+        "MikroOrm"
+    ],
+    "cloud": [
+        "AWS",
+        "Github Action",
+        "Docker",
+        "Fargate",
+        "Git"
+    ]
+}

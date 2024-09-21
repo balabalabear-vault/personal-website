@@ -1,0 +1,63 @@
+{
+    "categroy": "work",
+    "role": "Full Stack Developer",
+    "timePeriod": "FEB 2022 - MAR 2024",
+    "company": {
+        "name": "Concept4 Limited",
+        "location": "Hong Kong",
+        "image": {
+            "src": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTT9lFqCxVAsO7MYZSHz757nFWo5FGDV0wwgw&s",
+            "width": 200,
+            "height": 200
+        },
+        "linkedIn": {
+            "text": "LinkedIn",
+            "href": "https://www.linkedin.com/company/concept4group/posts/?feedView=all"
+        },
+        "homePage": {
+            "text": "Home Page",
+            "href": "https://www.concept4.net/"            
+        }
+    },
+    "referenceInfo": {
+        "text": "Michael Chung Yin Lau",
+        "href": "https://www.linkedin.com/in/michaelchungyinlau/"
+    },
+    "frontend": [
+        "React",
+        "Next",
+        "Redux",
+        "Redux-Saga",
+        "Babel",
+        "Webpack",
+        "MUI",
+        "Sharp",
+        "Framer Motion",
+        "React Testing Library"        
+    ],
+    "backend": [
+        "Node",
+        "Express",
+        "Nest",
+        "RESTful API",
+        "OpenAPI Specification",
+        "WebSocket",
+        "Jest"
+    ],
+    "database": [
+        "PostgreSql",
+        "Mongodb",
+        "Redis",
+        "Sequelize",
+        "TypeOrm"
+    ],
+    "cloud": [
+        "AWS",
+        "GCP",
+        "Vercel",
+        "CircleCI",
+        "Docker",
+        "K8s",
+        "Git"
+    ]
+}

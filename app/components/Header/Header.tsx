@@ -1,7 +1,8 @@
-import { Box, Divider, Typography } from "@mui/material";
+import { Typography } from "@mui/material";
 import Grid from '@mui/material/Grid2';
 
 import SearchBar from "../SearchBar/SearchBar";
+import JBox from "../JBox/JBox";
 
 interface IHeader {
     title: string;
@@ -13,7 +14,7 @@ export default function Header({
     subtitle
 }: Readonly<IHeader>) {
     return (
-        <Box sx={{ mb: 2 }}>
+        <JBox needsDivider isSectionComponent>
             <Typography variant="h3">{title}</Typography>
             <Grid container spacing={2} alignItems="center" my={1}>
                 <Grid size={{ xs: 12, sm: 8 }}>
@@ -23,8 +24,6 @@ export default function Header({
                     <SearchBar fullWidth />
                 </Grid>
             </Grid>
-            <Divider />
-        </Box>
-
+        </JBox>
     )
 }

@@ -1,12 +1,13 @@
 'use client';
 
-import { useMemo, useState } from "react";
-import { AppBar, Container, Box, Button, IconButton, Drawer, Divider, MenuItem, alpha, styled, Toolbar, Slide, useScrollTrigger } from "@mui/material";
+import CloseRoundedIcon from '@mui/icons-material/CloseRounded';
 import GitHubIcon from '@mui/icons-material/GitHub';
 import LinkedInIcon from '@mui/icons-material/LinkedIn';
 import MenuIcon from '@mui/icons-material/Menu';
-import CloseRoundedIcon from '@mui/icons-material/CloseRounded';
-import Link from "next/link";
+import { alpha, AppBar, Box, Button, Container, Drawer, IconButton, MenuItem, Slide, styled, Toolbar, useScrollTrigger } from "@mui/material";
+import { useMemo, useState } from "react";
+import JBox from "../JBox/JBox";
+import JLink from "../JLink/JLink";
 
 
 const StyledToolbar = styled(Toolbar)(({ theme }) => ({
@@ -75,7 +76,7 @@ export default function NavBar() {
                                 {
                                     Object.values(tabs).map((tab) => (
                                         <Button key={tab.text} variant="text" color="info" size="small">
-                                            <Link href={tab.href}> {tab.text} </Link>
+                                            <JLink href={tab.href} newTab={false} noDecoration> {tab.text} </JLink>
                                         </Button>
                                     ))
                                 }
@@ -90,7 +91,7 @@ export default function NavBar() {
                         >
                             {
                                 Object.values(hyperLinks).map((resource) => (
-                                    <Link key={resource.link} target="_blank" href={resource.link}> {resource.icon} </Link>
+                                    <JLink key={resource.link} href={resource.link} newTab noDecoration> {resource.icon} </JLink>                                    
                                 ))
                             }
                         </Box>
@@ -100,8 +101,10 @@ export default function NavBar() {
                             </IconButton>
                             <Drawer anchor="top" open={open} onClose={toggleDrawer(false)}>
                                 <Box sx={{ p: 2, backgroundColor: 'background.default' }}>
-                                    <Box
-                                        sx={{
+                                    <JBox
+                                        needsDivider
+                                        isSectionComponent
+                                        style={{
                                             display: 'flex',
                                             alignItems: 'center',
                                             justifyContent: 'space-between',
@@ -110,8 +113,7 @@ export default function NavBar() {
                                         <IconButton onClick={toggleDrawer(false)}>
                                             <CloseRoundedIcon />
                                         </IconButton>
-                                    </Box>
-                                    <Divider sx={{ my: 3 }} />
+                                    </JBox>
                                     {
                                         Object.values(tabs).map((tab) => (
                                             <MenuItem key={tab.text}>

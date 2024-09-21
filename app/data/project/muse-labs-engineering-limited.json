@@ -1,0 +1,46 @@
+{
+    "categroy": "work",
+    "role": "Software Developer",
+    "timePeriod": "JUL 2021 - JAN 2022",
+    "company": {
+        "name": "Muse Labs Engineering Limited",
+        "location": "Hong Kong",
+        "image": {
+            "src": "https://muselabs-eng.com/wp-content/uploads/2021/08/bluelogo.png",
+            "width": 244,
+            "height": 190
+        },
+        "homePage": {
+            "text": "Home Page",
+            "href": "https://muselabs-eng.com/en/home-eng/"            
+        }
+    },
+    "frontend": [
+        "React",
+        "Zustand",
+        "Bootstrap",
+        "TanStack Query",
+        "D3.js"     
+    ],
+    "backend": [
+        "Node",
+        "Express",
+        "RESTful API",
+        "JWT",
+        "Rabbit MQ",
+        "Jest"
+    ],
+    "database": [
+        "PostgreSql",
+        "InfluxDb",
+        "Redis",
+        "Knex"
+    ],
+    "cloud": [
+        "AWS",
+        "GitHub Action",
+        "Docker",
+        "Grafana",
+        "Git"
+    ]
+}

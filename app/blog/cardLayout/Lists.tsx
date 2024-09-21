@@ -1,10 +1,11 @@
 'use client';
-import { Paper, Typography, Divider, Box, styled } from "@mui/material";
+import FavoriteIcon from '@mui/icons-material/Favorite';
+import RemoveRedEyeIcon from '@mui/icons-material/RemoveRedEye';
+import { Box, Paper, styled, Typography } from "@mui/material";
 import Grid from "@mui/material/Grid2";
 import CategoryLayer from "../../components/CategoryLayer/CategoryLayer";
-import RemoveRedEyeIcon from '@mui/icons-material/RemoveRedEye';
-import FavoriteIcon from '@mui/icons-material/Favorite';
-import Link from "next/link";
+import JBox from "../../components/JBox/JBox";
+import JLink from "../../components/JLink/JLink";
 
 const StyledTypography = styled(Typography)({
     display: '-webkit-box',
@@ -44,7 +45,7 @@ export default function Lists({
                     createdAt,
                 }) => (
                     <Grid size={{ xs: 12, sm: 6 }} key={id}>
-                        <Link href={`/blog/${id}`} style={{ textDecoration: 'none' }}>
+                        <JLink href={`/blog/${id}`} newTab={false} noDecoration>
                             <Paper sx={{
                                 padding: 2,
                                 '&:hover': {
@@ -53,8 +54,9 @@ export default function Lists({
                                 }
                             }}>
                                 <CategoryLayer categories={categories} clickable={false} />
-                                <Typography variant="h6">{title}</Typography>
-                                <Divider />
+                                <JBox needsDivider>
+                                    <Typography variant="h6">{title}</Typography>
+                                </JBox>
                                 <StyledTypography variant="body1">
                                     {content}
                                 </StyledTypography>
@@ -70,7 +72,7 @@ export default function Lists({
                                     <Typography variant="subtitle2">{createdAt}</Typography>
                                 </Box>
                             </Paper>
-                        </Link>
+                        </JLink>
                     </Grid>
                 ))
             }
