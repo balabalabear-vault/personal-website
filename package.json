@@ -15,12 +15,16 @@
     "@mui/icons-material": "^6.0.2",
     "@mui/material": "^6.0.2",
     "@mui/material-nextjs": "^6.0.2",
+    "@react-three/csg": "^3.2.0",
+    "@react-three/drei": "^9.113.0",
     "fs": "^0.0.1-security",
     "next": "latest",
     "path": "^0.12.7",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "server-only": "^0.0.1"
+    "react-three-fiber": "^6.0.13",
+    "server-only": "^0.0.1",
+    "three": "^0.168.0"
   },
   "devDependencies": {
     "@testing-library/jest-dom": "6.1.5",

@@ -60,7 +60,7 @@ export default async function Page({ params }: Params) {
                             <LocationOnOutlinedIcon /> {data.company.location}
                         </Typography>
                         <Typography variant="subtitle2">
-                            <JLink href={data.company.homePage.href} noDecoration newTab>
+                            <JLink href={data.company.homePage.href} newTab>
                                 <HomeOutlinedIcon /> {data.company.homePage.text}
                             </JLink>
                         </Typography>
@@ -68,7 +68,7 @@ export default async function Page({ params }: Params) {
                             {
                                 data.company.linkedIn
                                     ? (
-                                        <JLink href={data.company.linkedIn.href} noDecoration newTab>
+                                        <JLink href={data.company.linkedIn.href} newTab>
                                             <LinkedInIcon /> {data.company.linkedIn.text}
                                         </JLink>
                                     ) : (
@@ -84,7 +84,7 @@ export default async function Page({ params }: Params) {
                             {
                                 data.referenceInfo
                                     ? (
-                                        <JLink href={data.referenceInfo.href} noDecoration newTab>
+                                        <JLink href={data.referenceInfo.href} newTab>
                                             <ConnectWithoutContactOutlinedIcon /> {data.referenceInfo.text}
                                         </JLink>
                                     ) : (

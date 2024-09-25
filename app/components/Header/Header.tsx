@@ -7,11 +7,13 @@ import JBox from "../JBox/JBox";
 interface IHeader {
     title: string;
     subtitle: string;
+    showSearchBar?: boolean;
 }
 
 export default function Header({
     title,
-    subtitle
+    subtitle,
+    showSearchBar = true,
 }: Readonly<IHeader>) {
     return (
         <JBox needsDivider isSectionComponent>
@@ -20,9 +22,13 @@ export default function Header({
                 <Grid size={{ xs: 12, sm: 8 }}>
                     <Typography variant="subtitle1">{subtitle}</Typography>
                 </Grid>
-                <Grid size={{ xs: 12, sm: 4 }}>
-                    <SearchBar fullWidth />
-                </Grid>
+                {
+                    showSearchBar && (
+                        <Grid size={{ xs: 12, sm: 4 }}>
+                            <SearchBar fullWidth />
+                        </Grid>
+                    )
+                }
             </Grid>
         </JBox>
     )

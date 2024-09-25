@@ -12,7 +12,7 @@ export default function JLink(
         children,
         href,
         newTab,
-        noDecoration=true,
+        noDecoration=false,
     }: Readonly<IJLink>,
 ) {
     return (
@@ -20,8 +20,8 @@ export default function JLink(
             href={href}
             target={newTab ? '_blank' : '_self'}
             style={{
-                textDecoration: noDecoration ? 'none' : 'Highlight',
-                color: noDecoration ? 'rgba(0, 0, 0, 0.87)' : '-webkit-link'
+                textDecoration: noDecoration ? 'none' : 'underline',
+                color: noDecoration ? '#ffffff' : 'bisque'
             }}
         >
             {children && children}

@@ -14,8 +14,8 @@ export default function RootLayout({
     <html lang="en">
       <body>
         <AppRouterCacheProvider>
-          <CssBaseline />
           <ThemeProvider theme={theme}>
+            <CssBaseline />
             <NavBar />
             <Container sx={{ my: { xs: 10, md: 12 } }}>
               {children}

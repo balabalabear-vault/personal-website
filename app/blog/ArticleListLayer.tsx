@@ -1,6 +1,7 @@
 import { Box, Typography } from "@mui/material";
 import Grid from "@mui/material/Grid2";
 import Lists from "./cardLayout/Lists";
+import JEmptyList from "../components/JEmptyList/JEmptyList";
 
 interface IPost {
     categories: string[],
@@ -16,7 +17,12 @@ export default async function ArticleListLayer({
         <Box>
             <Typography variant="h4" mb={2}>Latest</Typography>
             <Grid container spacing={2}>
-                <Lists posts={posts}/>
+                {
+                    posts.length
+                    ? (<Lists posts={posts}/>)
+                    : <JEmptyList />
+                }
+                
             </Grid>
         </Box>
     )
