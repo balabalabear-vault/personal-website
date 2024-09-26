@@ -1,6 +1,6 @@
 describe('NavBar', () => {
   beforeEach(function () {
-    cy.visit('http://localhost:3000')
+    cy.visit('http://127.0.0.1:3000')
   })
 
   context('testing the GitHub redirection', function () {

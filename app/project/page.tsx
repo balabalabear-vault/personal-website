@@ -4,7 +4,7 @@ import CategoryLayer from "../components/CategoryLayer/CategoryLayer";
 import ProjectListLayer from "./ProjectListLayer";
 
 export default async function Page() {
-    const data = (await fetch('http://localhost:3000/api/categories?type=project'));
+    const data = (await fetch('http://127.0.0.1:3000/api/categories?type=project'));
     const { data: categories} = await data.json();
     return (
         <Box>

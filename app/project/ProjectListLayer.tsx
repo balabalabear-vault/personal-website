@@ -9,7 +9,7 @@ interface IPost {
 export default async function ProjectListLayer({
     categories
 }: Readonly<IPost>) {
-    const data = (await fetch('http://localhost:3000/api/projects', { cache: 'no-store'} ));
+    const data = (await fetch('http://127.0.0.1:3000/api/projects', { cache: 'no-store'} ));
     const { data: projects } = await data.json();
     return (
         <Box>

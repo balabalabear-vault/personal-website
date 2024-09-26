@@ -10,7 +10,7 @@ interface IPost {
 export default async function ArticleListLayer({
     categories
 }: Readonly<IPost>) {
-    const data = (await fetch('http://localhost:3000/api/posts', { cache: 'no-store'} ));
+    const data = (await fetch('http://127.0.0.1:3000/api/posts', { cache: 'no-store'} ));
     const { data: posts } = await data.json();
 
     return (
