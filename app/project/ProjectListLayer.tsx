@@ -20,3 +20,4 @@ export default async function ProjectListLayer({
         </Box>
     )
 }
+export const dynamic = 'force-dynamic';

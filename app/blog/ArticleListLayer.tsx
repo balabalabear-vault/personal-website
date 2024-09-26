@@ -27,3 +27,4 @@ export default async function ArticleListLayer({
         </Box>
     )
 }
+export const dynamic = 'force-dynamic';
