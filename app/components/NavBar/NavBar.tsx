@@ -71,13 +71,15 @@ export default function NavBar() {
                 <Container maxWidth="lg">
                     <StyledToolbar variant="dense" disableGutters>
                         <Box sx={{ flexGrow: 1, display: 'flex', alignItems: 'center', px: 0 }}>
-                            {/* <Sitemark /> */}
                             <Box sx={{ display: { xs: 'none', md: 'flex' } }}>
                                 {
                                     Object.values(tabs).map((tab) => (
-                                        <Button key={tab.text} variant="text" color="info" size="small">
-                                            <JLink href={tab.href} newTab={false} noDecoration> {tab.text} </JLink>
-                                        </Button>
+                                        <JLink key={tab.text} href={tab.href} newTab={false} noDecoration>
+                                            <Button variant="text" color="info" size="small">
+                                                {tab.text}
+                                            </Button>
+                                        </JLink>
+
                                     ))
                                 }
                             </Box>
@@ -91,7 +93,11 @@ export default function NavBar() {
                         >
                             {
                                 Object.values(hyperLinks).map((resource) => (
-                                    <JLink key={resource.link} href={resource.link} newTab noDecoration> {resource.icon} </JLink>                                    
+                                    <JLink key={resource.link} href={resource.link} newTab noDecoration>
+                                        <IconButton>
+                                            {resource.icon}
+                                        </IconButton>
+                                    </JLink>
                                 ))
                             }
                         </Box>
@@ -107,7 +113,8 @@ export default function NavBar() {
                                         style={{
                                             display: 'flex',
                                             alignItems: 'center',
-                                            justifyContent: 'space-between',
+                                            justifyContent: 'flex-end',
+                                            px: 2,
                                         }}
                                     >
                                         <IconButton onClick={toggleDrawer(false)}>
@@ -116,22 +123,13 @@ export default function NavBar() {
                                     </JBox>
                                     {
                                         Object.values(tabs).map((tab) => (
-                                            <MenuItem key={tab.text}>
-                                                {tab.text}
-                                            </MenuItem>
+                                            <JLink key={tab.text} href={tab.href} newTab={false} noDecoration>
+                                                <MenuItem onClick={toggleDrawer(false)}>
+                                                    {tab.text}
+                                                </MenuItem>
+                                            </JLink>
                                         ))
-
                                     }
-                                    <MenuItem>
-                                        <Button color="primary" variant="contained" fullWidth>
-                                            Sign up
-                                        </Button>
-                                    </MenuItem>
-                                    <MenuItem>
-                                        <Button color="primary" variant="outlined" fullWidth>
-                                            Sign in
-                                        </Button>
-                                    </MenuItem>
                                 </Box>
                             </Drawer>
                         </Box>

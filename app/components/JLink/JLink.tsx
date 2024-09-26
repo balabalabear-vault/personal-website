@@ -1,4 +1,5 @@
-import Link from "next/link"
+'use client';
+import NextLink from "next/link";
 
 interface IJLink {
     href: string;
@@ -12,19 +13,19 @@ export default function JLink(
         children,
         href,
         newTab,
-        noDecoration=false,
+        noDecoration = false,
     }: Readonly<IJLink>,
 ) {
     return (
-        <Link
+        <NextLink
             href={href}
             target={newTab ? '_blank' : '_self'}
             style={{
                 textDecoration: noDecoration ? 'none' : 'underline',
-                color: noDecoration ? '#ffffff' : 'bisque'
+                color: noDecoration ? '#ffffff' : 'bisque',
             }}
         >
             {children && children}
-        </Link>
+        </NextLink>
     )
 }

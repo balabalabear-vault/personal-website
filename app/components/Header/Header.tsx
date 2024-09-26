@@ -13,7 +13,7 @@ interface IHeader {
 export default function Header({
     title,
     subtitle,
-    showSearchBar = true,
+    showSearchBar = false,
 }: Readonly<IHeader>) {
     return (
         <JBox needsDivider isSectionComponent>

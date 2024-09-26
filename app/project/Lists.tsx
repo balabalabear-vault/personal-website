@@ -30,10 +30,17 @@ export default async function Lists({
                 projects.map(({
                     id, duration, image, role, name, categories
                 }) => (
-                    <Grid size={{ xs: 12, sm: 6 }} key={id}>
+                    <Grid
+                        key={id}
+                        size={{ xs: 12, sm: 6 }}
+                        sx={{
+                            transition: "transform 0.15s ease-in-out",
+                            '&:hover': { transform: "scale3d(1.05, 1.05, 1)" }
+                        }}
+                    >
                         <JLink href={`/project/${id}`} newTab={false} noDecoration>
-                            <Card key={id} sx={{ p: 1 }}>
-                                <Paper elevation={0}>
+                            <Card key={id} sx={{ p: 1, height: '100%' }}>
+                                <Paper elevation={1}>
                                     <JBox needsDivider style={{ p: 2 }}>
                                         <CardMedia
                                             component="img"

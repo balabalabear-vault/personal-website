@@ -56,25 +56,21 @@ export default async function Page({ params }: Params) {
                         <Typography variant="subtitle1" component="span" sx={{ display: { xs: 'block', md: 'none' } }}>
                             {`${data.role}`} • {`${data.timePeriod}`}
                         </Typography>
-                        <Typography variant="subtitle2" textAlign="center">
-                            <LocationOnOutlinedIcon /> {data.company.location}
-                        </Typography>
-                        <Typography variant="subtitle2">
-                            <JLink href={data.company.homePage.href} newTab>
-                                <HomeOutlinedIcon /> {data.company.homePage.text}
-                            </JLink>
-                        </Typography>
                         <Typography variant="subtitle2">
                             {
-                                data.company.linkedIn
+                                data.company.homePage.text
                                     ? (
-                                        <JLink href={data.company.linkedIn.href} newTab>
-                                            <LinkedInIcon /> {data.company.linkedIn.text}
+                                        <JLink href={data.company.homePage.href} newTab>
+                                            <Tooltip title={data.company.homePage.text} placement="right-end">
+                                                <IconButton>
+                                                    <HomeOutlinedIcon />
+                                                </IconButton>
+                                            </Tooltip>
                                         </JLink>
                                     ) : (
-                                        <Tooltip title="Oops, no LinkedIn Connection here." placement="right-end">
+                                        <Tooltip title="No homepage provided" placement="right-end">
                                             <IconButton>
-                                                <LinkedInIcon />
+                                                <HomeOutlinedIcon />
                                             </IconButton>
                                         </Tooltip>
                                     )
@@ -85,7 +81,11 @@ export default async function Page({ params }: Params) {
                                 data.referenceInfo
                                     ? (
                                         <JLink href={data.referenceInfo.href} newTab>
-                                            <ConnectWithoutContactOutlinedIcon /> {data.referenceInfo.text}
+                                            <Tooltip title={data.referenceInfo.text} placement="right-end">
+                                                <IconButton>
+                                                    <ConnectWithoutContactOutlinedIcon />
+                                                </IconButton>
+                                            </Tooltip>
                                         </JLink>
                                     ) : (
                                         <Tooltip title="Reference no longer exists." placement="right-end">

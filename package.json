@@ -17,6 +17,7 @@
     "@mui/material-nextjs": "^6.0.2",
     "@react-three/csg": "^3.2.0",
     "@react-three/drei": "^9.113.0",
+    "framer-motion": "^11.7.0",
     "fs": "^0.0.1-security",
     "next": "latest",
     "path": "^0.12.7",
