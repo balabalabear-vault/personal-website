@@ -5,6 +5,13 @@ import NavBar from './components/NavBar/NavBar';
 import CssBaseline from '@mui/material/CssBaseline';
 import Container from '@mui/material/Container';
 
+import type { Viewport } from 'next'
+ 
+export const viewport: Viewport = {
+  width: 'device-width',
+  initialScale: 1,
+}
+
 export default function RootLayout({
   children,
 }: {
