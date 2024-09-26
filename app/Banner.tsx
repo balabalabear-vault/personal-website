@@ -42,8 +42,8 @@ export default function Banner() {
 
     return (
         <>
-            <Typography variant="h1" ref={ref}>This is Jack Kwok.</Typography>
-            <Typography variant="h1">An</Typography>
+            <Typography variant="h1">This is Jack Kwok.</Typography>
+            <Typography variant="h1" ref={ref}>An</Typography>
             <Typography ref={targetRef} variant="h1" component="span" sx={{ display: 'inline-flex', overflow: 'hidden' }}>
                 <Stack direction="column" ref={scope}>
                     {
