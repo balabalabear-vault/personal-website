@@ -1,13 +1,14 @@
 import ConnectWithoutContactOutlinedIcon from '@mui/icons-material/ConnectWithoutContactOutlined';
 import HomeOutlinedIcon from '@mui/icons-material/HomeOutlined';
-import { Card, CardContent, CardHeader, Container, Divider, IconButton, Tooltip, Typography } from "@mui/material";
-import Grid from "@mui/material/Grid2";
+import { Box, Card, CardContent, CardHeader, Container, Divider, IconButton, Tooltip, Typography } from "@mui/material";
 import Stack from "@mui/material/Stack";
+import KeyboardDoubleArrowLeftIcon from '@mui/icons-material/KeyboardDoubleArrowLeft';
 import { promises as fs } from 'fs';
 import Image from 'next/image';
 import CategoryLayer from "../../components/CategoryLayer/CategoryLayer";
 import JBox from "../../components/JBox/JBox";
 import JLink from '../../components/JLink/JLink';
+import GoBackButton from '../../components/GoBackButton/GoBackButton';
 
 
 type Params = {
@@ -25,9 +26,10 @@ export default async function Page({ params }: Params) {
     const data = JSON.parse(file);
 
     return (
-        <Grid container justifyContent="center">
-            <Grid size={{ xs: 12, md: 'auto' }} alignSelf="center" justifySelf="center" sx={{ textAlign: "center", position: 'relative', width: '100%' }}>
-                <Container sx={{ textAlign: "center", position: 'relative' }}>
+        <Stack direction={{ xs: "column", md: "row" }}>
+            <Stack>
+                <GoBackButton />
+                <Container sx={{ flexGrow: 1, display: 'center', alignItems: 'center', justifyContent: 'center' }}>
                     <Image
                         src={data.company.image.src}
                         alt={`${params.slug}-logo`}
@@ -37,8 +39,8 @@ export default async function Page({ params }: Params) {
                         priority
                     />
                 </Container>
-            </Grid>
-            <Grid size={{ xs: 12, md: 'grow' }}>
+            </Stack>
+            <Box>
                 <JBox needsDivider isSectionComponent>
                     <Typography variant="h4" sx={{ textAlign: { xs: 'center', md: 'start' } }}>
                         {data.company.name}
@@ -46,15 +48,16 @@ export default async function Page({ params }: Params) {
                     <Typography variant="subtitle1" component="span" sx={{ display: { xs: 'none', md: 'inline' } }}>
                         {`${data.role}`} • {`${data.timePeriod}`}
                     </Typography>
+                    <Typography variant="subtitle1" component="span" textAlign="center" sx={{ display: { xs: 'block', md: 'none' } }}>
+                        {`${data.role}`} • {`${data.timePeriod}`}
+                    </Typography>
                     <Stack
-                        direction={{ xs: 'column', md: 'row' }}
+                        direction="row"
+                        justifyContent={{ xs: "center", md: "flex-start" }}
                         alignItems="center"
                         spacing={2}
                         textAlign="center"
                     >
-                        <Typography variant="subtitle1" component="span" sx={{ display: { xs: 'block', md: 'none' } }}>
-                            {`${data.role}`} • {`${data.timePeriod}`}
-                        </Typography>
                         <Typography variant="subtitle2">
                             {
                                 data.company.homePage.text
@@ -151,7 +154,7 @@ export default async function Page({ params }: Params) {
                         </CardContent>
                     </Card>
                 </Container>
-            </Grid>
-        </Grid>
+            </Box>
+        </Stack>
     )
 }
