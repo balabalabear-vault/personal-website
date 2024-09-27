@@ -36,6 +36,7 @@
         "React Testing Library"        
     ],
     "backend": [
+        "C# .NET",
         "Node",
         "Express",
         "Nest",
