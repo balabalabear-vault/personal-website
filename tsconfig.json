@@ -20,7 +20,8 @@
     "incremental": true,
     "baseUrl": ".",
     "types": [
-      "@testing-library/jest-dom"
+      "@testing-library/jest-dom",
+      "./types/mdx.d.ts"
     ],
     "paths": {
       "@/components/*": [
@@ -43,9 +44,11 @@
     "next-env.d.ts",
     "**/*.ts",
     "**/*.tsx",
+    "**/*.mdx",
+    "**/*.md",
     "types.d.ts",
     ".next/types/**/*.ts",
-    "next.config.js"
+    "next.config.mjs"
   ],
   "exclude": [
     "cypress.config.ts",
