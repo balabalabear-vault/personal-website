@@ -7,7 +7,7 @@ export const metadata = {
 
 export default function Page() {
   return (
-    <Container>
+    <Container maxWidth="lg">
       <Banner />
     </Container>
   )

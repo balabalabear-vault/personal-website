@@ -1,5 +1,6 @@
 'use client';
 
+import Box from "@mui/material/Box";
 import Stack from "@mui/material/Stack";
 import Typography from "@mui/material/Typography";
 import { useAnimate } from "framer-motion";
@@ -41,10 +42,11 @@ export default function Banner() {
     const colorGenerator = (num: number) => num % 2 === 0 ? '45deg, #ff1835, #ffc900' : '45deg, #0077ff, #00e7df';
 
     return (
-        <>
-            <Typography variant="h1">This is Jack Kwok.</Typography>
-            <Typography variant="h1" ref={ref}>An</Typography>
-            <Typography ref={targetRef} variant="h1" component="span" sx={{ display: 'inline-flex', overflow: 'hidden' }}>
+        <Box>
+            <Typography variant="h3">Hi, I am</Typography>
+            <Typography variant="h3">Jack Kwok.</Typography>
+            <Typography variant="h3" ref={ref}>An</Typography>
+            <Typography ref={targetRef} variant="h3" component="span" sx={{ width: '100%', display: 'inline-flex', overflow: 'hidden' }}>
                 <Stack direction="column" ref={scope}>
                     {
                         descriptions.map((text, i) => (
@@ -55,7 +57,7 @@ export default function Banner() {
                                     WebkitBackgroundClip: 'text',
                                     WebkitTextFillColor: 'transparent',
                                 }}
-                                variant="h1"
+                                variant="h3"
                             >
                                 {text}
                             </Typography>
@@ -63,9 +65,9 @@ export default function Banner() {
                     }
                 </Stack>
             </Typography>
-            <Typography variant="h1">
+            <Typography variant="h3">
                 Full Stack Developer.
             </Typography>
-        </>
+        </Box>
     )
 }
