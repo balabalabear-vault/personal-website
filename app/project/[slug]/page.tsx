@@ -1,7 +1,5 @@
 import ConnectWithoutContactOutlinedIcon from '@mui/icons-material/ConnectWithoutContactOutlined';
 import HomeOutlinedIcon from '@mui/icons-material/HomeOutlined';
-import LinkedInIcon from '@mui/icons-material/LinkedIn';
-import LocationOnOutlinedIcon from '@mui/icons-material/LocationOnOutlined';
 import { Card, CardContent, CardHeader, Container, Divider, IconButton, Tooltip, Typography } from "@mui/material";
 import Grid from "@mui/material/Grid2";
 import Stack from "@mui/material/Stack";
@@ -36,6 +34,7 @@ export default async function Page({ params }: Params) {
                         width={data.company.image.width}
                         height={data.company.image.height}
                         style={{ objectFit: "contain" }}
+                        priority
                     />
                 </Container>
             </Grid>
