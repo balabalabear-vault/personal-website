@@ -2,13 +2,12 @@ import ConnectWithoutContactOutlinedIcon from '@mui/icons-material/ConnectWithou
 import HomeOutlinedIcon from '@mui/icons-material/HomeOutlined';
 import { Box, Card, CardContent, CardHeader, Container, Divider, IconButton, Tooltip, Typography } from "@mui/material";
 import Stack from "@mui/material/Stack";
-import KeyboardDoubleArrowLeftIcon from '@mui/icons-material/KeyboardDoubleArrowLeft';
 import { promises as fs } from 'fs';
 import Image from 'next/image';
 import CategoryLayer from "../../components/CategoryLayer/CategoryLayer";
+import GoBackButton from '../../components/GoBackButton/GoBackButton';
 import JBox from "../../components/JBox/JBox";
 import JLink from '../../components/JLink/JLink';
-import GoBackButton from '../../components/GoBackButton/GoBackButton';
 
 
 type Params = {

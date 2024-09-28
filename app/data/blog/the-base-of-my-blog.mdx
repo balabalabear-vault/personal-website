@@ -1,0 +1,54 @@
+# The Base of My Blog - Markdown
+
+I think Markdown is a brilliant tool as it is so lightweight but still be able to add formatting and be rendered in multiple palces.
+Yet, I believe not every programmer knows how to use Markdown syntax to document their work, at least I don't.
+Therefore, I am going to implement Markdown files throughout all my blog to let me acquire a better documentaiton skills.
+ 
+In this post, I am going to show how I enable Markdown rendering in this Next project. Most of my content will be covered in [Next Documentation](https://nextjs.org/docs/app/building-your-application/configuring/mdx) though. 
+
+---
+### STEP 1: Installation
+I am using yarn in this project. Therefore, I am going to use yarn as my command. Feel free to use others like npm.
+
+Basic installation:
+
+```
+yarn add @next/mdx @mdx-js/loader @mdx-js/react @types/mdx
+```
+
+If you want to use it in slug page:
+
+```
+yarn add next-mdx-remote
+```
+---
+### STEP 2: TypeScript Config
+If you are using TypeScript, you may encounter the folowing error:
+<img src="/blog/mdx-type-error.png" alt="drawing" style={{ width: '80vw'}}/>
+
+In this case, you need to add the following ts declaration in your types directory suggested by [MDXjs](https://v0.mdxjs.com/advanced/typescript).
+```
+declare module '*.mdx' {
+    let MDXComponent: (props) => JSX.Element;
+    export default MDXComponent;
+}
+```
+---
+### STEP 3: TypeScript Config
+Create an mdx-components.tsx file in the root of the project to define global MDX Components.
+```
+import type { MDXComponents } from 'mdx/types';
+export function useMDXComponents(components: MDXComponents): MDXComponents {
+  return ({
+    ...components,
+  })
+}
+```
+---
+Setup-wise I think that's all! Remeber to use <code>`<MDXRemote />`</code> from ```next-mdx-remote/rsc``` if you want to use it in a slug page.
+
+See you next time, ciao!
+
+
+
+

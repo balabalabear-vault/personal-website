@@ -4,8 +4,15 @@ import Typography from "@mui/material/Typography";
 import KeyboardDoubleArrowLeftIcon from '@mui/icons-material/KeyboardDoubleArrowLeft';
 import { useRouter } from 'next/navigation'
 
+interface IGoBackButton {
+    center?: boolean
+}
 
-export default function GoBackButton() {
+export default function GoBackButton({
+    center = false
+}: Readonly<
+    IGoBackButton
+>) {
     const router = useRouter()
 
     return (
@@ -13,14 +20,15 @@ export default function GoBackButton() {
             alignSelf="flex-start"
             textAlign="center"
             display="flex"
-            justifyContent="center"
+            justifyContent={ center ? "center" : 'flex-start' }
             alignItems="center"
-            onClick={() => router.back()}      
+            onClick={() => router.back()}
             sx={{
                 '&:hover': {
                     cursor: 'pointer'
                 }
-            }} 
+            }}
+            variant="subtitle2"
         >
             <IconButton>
                 <KeyboardDoubleArrowLeftIcon />
