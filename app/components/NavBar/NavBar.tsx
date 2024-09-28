@@ -34,7 +34,7 @@ export default function NavBar() {
 
     const tabs = useMemo(() => ({
         ABOUT_ME: {
-            text: 'ABOUT ME',
+            text: 'Home Page',
             href: '/',
         },
         PROJECTS: {
