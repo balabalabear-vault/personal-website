@@ -60,5 +60,14 @@
         "Docker",
         "K8s",
         "Git"
+    ],
+    "otherTools": [
+        "Netsuite",
+        "Zoho",
+        "Jira",
+        "Miro",
+        "WordPress",
+        "Confluence",
+        "Notion"
     ]
 }

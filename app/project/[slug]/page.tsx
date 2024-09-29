@@ -150,6 +150,17 @@ export default async function Page({ params }: Params) {
                                     </Typography>
                                 )
                             }
+                            {
+                                data.otherTools && (
+                                    <Typography variant="h6">
+                                        Other Tools: {' '}
+                                        <CategoryLayer
+                                            tightSpacing
+                                            categories={data.otherTools}
+                                        />
+                                    </Typography>
+                                )
+                            }
                         </CardContent>
                     </Card>
                 </Container>
