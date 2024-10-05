@@ -26,7 +26,7 @@ export default async function Page({ params }: Params) {
 
     return (
         <Stack direction={{ xs: "column", md: "row" }}>
-            <Stack>
+            <Stack spacing={1}>
                 <GoBackButton />
                 <Container sx={{ flexGrow: 1, display: 'center', alignItems: 'center', justifyContent: 'center' }}>
                     <Image
@@ -39,7 +39,7 @@ export default async function Page({ params }: Params) {
                     />
                 </Container>
             </Stack>
-            <Box>
+            <Box flex={1}>
                 <JBox needsDivider isSectionComponent>
                     <Typography variant="h4" sx={{ textAlign: { xs: 'center', md: 'start' } }}>
                         {data.company.name}
