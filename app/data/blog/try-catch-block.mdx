@@ -1,0 +1,72 @@
+# Better try catch block usage in TypeScript
+
+Recently I got a take home assigment in my job hunting process which asked for a full stack application using React and Express.
+One of the bonus points they ask for is a logging mechanism that can logs and stores logged messages for future analysis.
+For ease, I installed Winston and integrated with my Express.
+However, since then, I realize how I try catch my errors before is somehow incorrect and can make huge improvements from it.
+
+---
+### Old Practise: Try Catch Everything in Everywhere
+<img src="/blog/try-catch-block-before.png" alt="old-implementation" style={{ width: '100%' }}/>
+
+Above snippet is a screenshot of a Nestjs server I created before. Left is the Controller and right is the Service (we can forget the unused `id` parameter here xd).
+You can see I am trying to try catch every single method I created and let the method throws an error to the layer above if something goes wrong. 
+However, it is annoying and lots of boilerplate is created. Inspired by this Reddit post, [Most common way for Service layer to interact with controller layer?](https://www.reddit.com/r/javahelp/comments/1cqf3ki/most_common_way_for_service_layer_to_interact/#:~:text=Yes%2C%20that's%20the%20way%20to,concise%2C%20readable%20and%20less%20messy),
+I decided to review and adopt new practise in my next project.
+
+---
+### Philosophy
+1. Create a ErrorHandler Service whose responsibility is to **log** and **return response** data and message.
+2. Inject the ErrorHandler Service to all Controlelrs and `try catch` Controllers' methods.
+3. No `try catch` block will be included in Service layer unless it involves 3rd party fetching, so that errors can be bubbled up.
+
+---
+### Step 1: Create a ErrorHandlerService
+<img src="/blog/error-handler-service.png" alt="error-handler" style={{ width: '100%' }}/>
+
+I created a new service called `ErrorHandlerService` and added a `handleError` method to process all my possible errors in the server.
+This service might not bring much value at this stage, but it can bring additional logic if I want to have some extra processing targeted to exceptions.
+
+---
+### Step 2: Define possible exceptions and catch by a Filter
+<img src="/blog/validation-exception.png" alt="error-handler" style={{ width: '100%' }}/>
+
+I defined an exception called `ValidationException` which will be mainly responsible for client side errors and made a nestjs `ExceptionFilter` to handle all `ValidationException` responses.
+At this stage, I haven't decide what to log yet, therefore, I am only returning a 400 back to the client.
+
+Within the `ValidationException` instance, I aim to record three things,
+1. where is the error throwing -> `stack`
+2. what message should I return back to the client -> `message`
+3. what parameters did the client passed to the function -> `queryParams`
+4. an optional explaination to further describe the excepetion -> `description`
+
+Remember to register the newly created `ExceptionFilter` to the `app.module` as a new provider. It should look something like below.
+```
+  providers: [
+    AppService,
+    {
+      provide: APP_FILTER,
+      useClass: ValidationExceptionFilter,
+    },
+  ],
+```
+
+---
+### Step 3: Consume the ErrorHandlerService and throw the ValidationException.
+<img src="/blog/try-catch-block-after.png" alt="old-implementation" style={{ width: '100%' }}/>
+
+As you can see, I injected the `ErrorHandlerService` to my Controller and am throwing the `ValidationException` in my Service layer.
+I only have the try catch block wrapping my Controller so that subsequence errors can be bubble up and handled by the `ErrorHandlerService`
+
+---
+### Step 4: Done!
+
+The above is the first stage of my new error handling.
+I will create more custom Exceptions in the future, but at most 5, because I read from the internet that having too much exceptions are useless as well.
+
+I will also need to enhance how I log, store and process my logs in the future.
+Most likely I will take care of it using the ELK stack.
+However, that will be my future blog post.
+This is the end of my current post!
+
+See you next time, ciao!
