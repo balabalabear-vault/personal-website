@@ -102,8 +102,9 @@ function Surrounding({
 
 }
 
-export default function Trips() {
+export default function Page() {
     const [hover, setHover] = useState(false);
+
     return (
         <Container data-tag="hi" maxWidth="xl" disableGutters sx={{
             height: '80vh',
