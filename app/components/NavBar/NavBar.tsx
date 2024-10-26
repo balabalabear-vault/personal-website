@@ -4,7 +4,7 @@ import CloseRoundedIcon from '@mui/icons-material/CloseRounded';
 import GitHubIcon from '@mui/icons-material/GitHub';
 import LinkedInIcon from '@mui/icons-material/LinkedIn';
 import MenuIcon from '@mui/icons-material/Menu';
-import { alpha, AppBar, Box, Button, Container, Drawer, IconButton, MenuItem, Slide, styled, Toolbar, useScrollTrigger } from "@mui/material";
+import { alpha, AppBar, Box, Button, Container, Drawer, IconButton, MenuItem, Slide, Stack, styled, Toolbar, useScrollTrigger } from "@mui/material";
 import { useMemo, useState } from "react";
 import JBox from "../JBox/JBox";
 import JLink from "../JLink/JLink";
@@ -34,31 +34,33 @@ export default function NavBar() {
 
     const tabs = useMemo(() => ({
         ABOUT_ME: {
-            text: 'Home Page',
+            text: 'HOME',
             href: '/',
         },
         PROJECTS: {
-            text: 'PROJECTS',
-            href: '/project',
+            text: 'PROJECT',
+            href: '/projects',
         },
         TRAVEL: {
             text: 'TRAVEL',
-            href: '/travel',
+            href: '/travels',
         },
         BLOG: {
             text: 'BLOG',
-            href: '/blog',
+            href: '/blogs',
         }
     }), []);
 
     const hyperLinks = useMemo(() => ({
         GITHUB: {
             icon: <GitHubIcon />,
-            link: 'https://github.com/kuenyuikwok1106'
+            link: 'https://github.com/kuenyuikwok1106',
+            testId: 'github'
         },
         LINKEDIN: {
             icon: <LinkedInIcon />,
-            link: 'https://www.linkedin.com/in/yui-kuen-kwok/'
+            link: 'https://www.linkedin.com/in/yui-kuen-kwok/',
+            testId: 'linkedIn'
         }
     }), [])
 
@@ -70,36 +72,26 @@ export default function NavBar() {
             >
                 <Container maxWidth="lg">
                     <StyledToolbar variant="dense" disableGutters>
-                        <Box sx={{ flexGrow: 1, display: 'flex', alignItems: 'center', px: 0 }}>
-                            <Box sx={{ display: { xs: 'none', md: 'flex' } }}>
+                        <Box sx={{ display: { xs: 'none', md: 'flex', }, flexGrow: 1, alignItems: 'center' }}>
+                            <Stack direction="row" flexGrow={1}>
                                 {
                                     Object.values(tabs).map((tab) => (
-                                        <JLink key={tab.text} href={tab.href} newTab={false} noDecoration>
-                                            <Button variant="text" color="info" size="small">
-                                                {tab.text}
-                                            </Button>
-                                        </JLink>
+                                        <Button key={tab.text} variant="text" color="info" size="small" href={tab.href}>
+                                            {tab.text}
+                                        </Button>
 
                                     ))
                                 }
-                            </Box>
-                        </Box>
-                        <Box
-                            sx={{
-                                display: { xs: 'none', md: 'flex' },
-                                gap: 1,
-                                alignItems: 'center',
-                            }}
-                        >
-                            {
-                                Object.values(hyperLinks).map((resource) => (
-                                    <JLink key={resource.link} href={resource.link} newTab noDecoration>
-                                        <IconButton>
+                            </Stack>
+                            <Stack direction="row" gap={1}>
+                                {
+                                    Object.values(hyperLinks).map((resource) => (
+                                        <IconButton key={resource.testId} href={resource.link} data-testid={resource.testId}>
                                             {resource.icon}
                                         </IconButton>
-                                    </JLink>
-                                ))
-                            }
+                                    ))
+                                }
+                            </Stack>
                         </Box>
                         <Box sx={{ display: { sm: 'flex', md: 'none' } }}>
                             <IconButton aria-label="Menu button" onClick={toggleDrawer(true)}>
