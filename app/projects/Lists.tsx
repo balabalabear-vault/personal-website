@@ -38,7 +38,7 @@ export default async function Lists({
                             '&:hover': { transform: "scale3d(1.05, 1.05, 1)" }
                         }}
                     >
-                        <JLink href={`/project/${id}`} newTab={false} noDecoration>
+                        <JLink href={`/projects/${id}`} newTab={false} noDecoration>
                             <Card key={id} sx={{ p: 1, height: '100%' }}>
                                 <Paper elevation={1}>
                                     <JBox needsDivider style={{ p: 2 }}>

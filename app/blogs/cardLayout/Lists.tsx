@@ -40,7 +40,7 @@ export default function Lists({
                     createdAt,
                 }) => (
                     <Grid size={{ xs: 12, sm: 6 }} key={id}>
-                        <JLink href={`/blog/${id}`} newTab={false} noDecoration>
+                        <JLink href={`/blogs/${id}`} newTab={false} noDecoration>
                             <Paper sx={{
                                 padding: 2,
                                 '&:hover': {

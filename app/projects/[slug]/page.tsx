@@ -17,7 +17,8 @@ type Params = {
 };
 
 export async function generateMetadata({ params }: Params) {
-    return { title: `Work Experience in ${params.slug}` };
+    const { slug } = await params;
+    return { title: `Work Experience in ${slug}` };
 }
 
 export default async function Page({ params }: Params) {

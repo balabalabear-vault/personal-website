@@ -1,5 +1,3 @@
-import Box from '@mui/material/Box';
-import GoBackButton from '../../components/GoBackButton/GoBackButton';
 import { promises as fs } from 'fs';
 import { MDXRemote } from 'next-mdx-remote/rsc';
 import Image, { ImageProps } from 'next/image';
@@ -59,12 +57,6 @@ const overrideComponents = {
 export default async function Page({ params }: Params) {
     const file = (await fs.readFile(process.cwd() + `/app/data/blog/${params.slug}.mdx`, 'utf8'));
     return (
-        <>
-            <Box>
-                <GoBackButton />
-            </Box>
-            <MDXRemote source={file} components={overrideComponents} />
-        </>
-
+        <MDXRemote source={file} components={overrideComponents} />
     )
 }
