@@ -11,9 +11,9 @@ import JLink from '../../components/JLink/JLink';
 
 
 type Params = {
-    params: {
+    params: Promise<{
         slug: string;
-    };
+    }>;
 };
 
 export async function generateMetadata({ params }: Params) {
@@ -21,7 +21,8 @@ export async function generateMetadata({ params }: Params) {
     return { title: `Work Experience in ${slug}` };
 }
 
-export default async function Page({ params }: Params) {
+export default async function Page(props: Params) {
+    const params = await props.params;
     const file = (await fs.readFile(process.cwd() + `/app/data/project/${params.slug}.json`, 'utf8'));
     const data = JSON.parse(file);
 

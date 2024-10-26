@@ -4,12 +4,13 @@ import Image, { ImageProps } from 'next/image';
 import { DetailedHTMLProps, ImgHTMLAttributes } from 'react';
 
 type Params = {
-    params: {
+    params: Promise<{
         slug: string;
-    };
+    }>;
 };
 
-export async function generateMetadata({ params }: Params) {
+export async function generateMetadata(props: Params) {
+    const params = await props.params;
     return { title: `Post: ${params.slug}` };
 }
 
@@ -54,7 +55,8 @@ const overrideComponents = {
     pre: CustomPre,
 }
 
-export default async function Page({ params }: Params) {
+export default async function Page(props: Params) {
+    const params = await props.params;
     const file = (await fs.readFile(process.cwd() + `/app/data/blog/${params.slug}.mdx`, 'utf8'));
     return (
         <MDXRemote source={file} components={overrideComponents} />
