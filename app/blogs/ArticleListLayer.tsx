@@ -4,24 +4,31 @@ import Grid from "@mui/material/Grid2";
 import Lists from "./cardLayout/Lists";
 import JEmptyList from "../components/JEmptyList/JEmptyList";
 
-interface IPost {
-    blogs: any,
+export type TArticleListLayer =  {
+    blogs: {
+        id: number,
+        categories: string[],
+        title: string,
+        content: string,
+        createdAt: string
+    }[]
 }
 
 export default function ArticleListLayer({
     blogs
-}: Readonly<IPost>) {
+}: Readonly<TArticleListLayer>) {
     return (
         <Box>
             <Typography variant="h4" mb={2}>Latest</Typography>
             <Grid container spacing={2}>
                 {
                     blogs.length
-                    ? (<Lists posts={blogs}/>)
+                    ? (<Lists blogs={blogs}/>)
                     : <JEmptyList />
                 }
             </Grid>
         </Box>
     )
 }
+
 export const dynamic = 'force-dynamic';

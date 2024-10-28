@@ -9,21 +9,11 @@ import Typography from "@mui/material/Typography";
 import CategoryLayer from "../components/CategoryLayer/CategoryLayer";
 import JBox from "../components/JBox/JBox";
 import JLink from "../components/JLink/JLink";
-
-interface ILists {
-    projects: {
-        id: number,
-        duration: string,
-        image: string,
-        role: string,
-        name: string,
-        categories: string[],
-    }[]
-}
+import { TPost } from "./ProjectListLayer";
 
 export default function Lists({
     projects
-}: Readonly<ILists>) {
+}: Readonly<TPost>) {
     return (
         <Grid container alignItems="stretch" spacing={2}>
             {

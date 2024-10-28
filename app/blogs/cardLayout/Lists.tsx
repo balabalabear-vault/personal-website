@@ -5,6 +5,7 @@ import CategoryLayer from "../../components/CategoryLayer/CategoryLayer";
 import JBox from "../../components/JBox/JBox";
 import JLink from "../../components/JLink/JLink";
 import { DateTime } from "luxon";
+import { TArticleListLayer } from "../ArticleListLayer";
 
 const StyledTypography = styled(Typography)({
     display: '-webkit-box',
@@ -15,24 +16,13 @@ const StyledTypography = styled(Typography)({
     marginTop: '8px'
 });
 
-interface ILayoutOne {
-    posts: {
-        id: number,
-        categories: string[],
-        title: string,
-        content: string,
-        createdAt: string
-    }[]
-}
-
-
 export default function Lists({
-    posts
-}: Readonly<ILayoutOne>) {
+    blogs
+}: Readonly<TArticleListLayer>) {
     return (
         <>
             {
-                posts.map(({
+                blogs.map(({
                     id,
                     categories,
                     title,

@@ -2,13 +2,20 @@ import { Box, Typography } from "@mui/material";
 import JEmptyList from "../components/JEmptyList/JEmptyList";
 import Lists from "./Lists";
 
-interface IPost {
-    projects: any
+export type TPost = {
+    projects: {
+        id: string;
+        name: string;
+        role: string;
+        image: string;
+        duration: string;
+        categories: string[]
+    }[]
 }
 
 export default function ProjectListLayer({
     projects
-}: Readonly<IPost>) {
+}: Readonly<TPost>) {
     return (
         <Box>
             <Typography variant="h4" mb={2}>Latest</Typography>
