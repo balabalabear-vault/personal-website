@@ -5,7 +5,7 @@ interface IJEmptyList {
     text?: string,
 }
 
-export default async function JEmptyList({
+export default function JEmptyList({
     text = "No update is available yet."
 }: Readonly<IJEmptyList>) {
 

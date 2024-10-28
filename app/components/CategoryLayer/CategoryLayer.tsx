@@ -1,30 +1,30 @@
 'use client';
 import { Stack, Chip } from "@mui/material";
-import { useState } from "react";
+import { Dispatch, SetStateAction } from "react";
 
 interface ICategoryLayer {
     categories: string[],
-    clickable?: boolean
     tightSpacing?: boolean
+    clickable?: boolean
+    selected?: string[],
+    onChange?: Dispatch<SetStateAction<string[]>>,
 }
 
 export default function CategoryLayer({
     categories,
+    selected,
+    onChange,
     clickable = false,
     tightSpacing = false,
 }: Readonly<ICategoryLayer>) {
-    const [selected, setSelected] = useState<{[key: string]: boolean}>({})
 
     const handleOnClick = (category: string) => {
-        if(!clickable) return;
-        if(selected[category]) setSelected((prev) => ({
-            ...prev,
-            [category]: false
-        }))
-        else setSelected((prev) => ({
-            ...prev,
-            [category]: true
-        }))
+        if (!clickable || !selected || !onChange) return;
+        if (selected.includes(category)) {
+            if(selected.length === 1) return;
+            onChange((prev) => prev.filter((v) => v !== category));
+        }
+        else onChange((prev) => [...prev, category])
     }
 
     return (
@@ -34,8 +34,8 @@ export default function CategoryLayer({
                     <Chip
                         key={cat}
                         label={cat}
-                        color={selected[cat] ? "primary" : 'default'}
-                        variant={selected[cat] ? "filled" : 'outlined'}
+                        color={selected && selected.includes(cat) ? "primary" : 'default'}
+                        variant={selected && selected.includes(cat) ? "filled" : 'outlined'}
                         onClick={() => handleOnClick(cat)}
                         sx={{
                             '&:hover': {
