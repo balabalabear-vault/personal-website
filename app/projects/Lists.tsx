@@ -21,11 +21,11 @@ interface ILists {
     }[]
 }
 
-export default async function Lists({
+export default function Lists({
     projects
 }: Readonly<ILists>) {
     return (
-        <Grid container alignItems="stretch">
+        <Grid container alignItems="stretch" spacing={2}>
             {
                 projects.map(({
                     id, duration, image, role, name, categories

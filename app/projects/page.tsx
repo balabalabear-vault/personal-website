@@ -1,7 +1,6 @@
 import Box from "@mui/material/Box";
 import Header from "../components/Header/Header";
-import CategoryLayer from "../components/CategoryLayer/CategoryLayer";
-import ProjectListLayer from "./ProjectListLayer";
+import Content from "./Content";
 
 export default async function Page() {
     const data = (await fetch('http://127.0.0.1:3000/api/categories?type=project'));
@@ -9,8 +8,10 @@ export default async function Page() {
     return (
         <Box>
             <Header title="Project" subtitle="Everything about my past working experience and personal projects." />
-            <CategoryLayer categories={categories} clickable={true}/>
-            <ProjectListLayer categories={categories}/>
+            <Content
+                categories={categories}
+                clickable
+            />
         </Box>
     )
 }
