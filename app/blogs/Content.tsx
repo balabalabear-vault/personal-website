@@ -1,12 +1,10 @@
 'use client';
 
 import { useState } from "react";
-import useSWR from 'swr'
 import CategoryLayer from "../components/CategoryLayer/CategoryLayer";
-import ArticleListLayer from "./ArticleListLayer";
-import fetcher from "../swr/fetcher";
 import JLoading from "../components/JLoading/JLoading";
 import useBlogs from "../swr/useBlogs";
+import ArticleListLayer from "./ArticleListLayer";
 
 type TContent = {
     categories: string[],
