@@ -2,6 +2,8 @@ import { promises as fs } from 'fs';
 import { MDXRemote } from 'next-mdx-remote/rsc';
 import Image, { ImageProps } from 'next/image';
 import { DetailedHTMLProps, ImgHTMLAttributes } from 'react';
+import GoBackButton from '../../components/GoBackButton/GoBackButton';
+import Box from '@mui/material/Box';
 
 type Params = {
     params: Promise<{
@@ -59,6 +61,11 @@ export default async function Page(props: Params) {
     const params = await props.params;
     const file = (await fs.readFile(process.cwd() + `/app/data/blog/${params.slug}.mdx`, 'utf8'));
     return (
-        <MDXRemote source={file} components={overrideComponents} />
+        <>
+            <GoBackButton />
+            <Box p={1}>
+                <MDXRemote source={file} components={overrideComponents} />
+            </Box>
+        </>
     )
 }
