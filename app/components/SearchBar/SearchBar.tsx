@@ -14,7 +14,6 @@ export default function SearchBar({
     const [text, setText] = useState<string>('');
     const deferredValue = useDeferredValue(text)
 
-
     const handeleOnChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         setText(e.target.value);
     }
