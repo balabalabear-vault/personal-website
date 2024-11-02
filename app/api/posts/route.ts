@@ -21,6 +21,14 @@ export async function GET(request: NextRequest) {
             createdAt: DateTime.fromISO('2024-10-11'),
             categories: ['Learning'],
         },
+        {
+            id: 'first-job-in-toronto',
+            title: 'Next Goal: Terraform Associate',
+            content: `Almost 7 months after I arrived Toronto, I finally got an offer as an Intermediate Frontend Developer.
+            It's a start and I appreciate the one who granted me this opportunity. Thank you very much.`,
+            createdAt: DateTime.fromISO('2024-11-01'),
+            categories: ['Updates'],
+        },
         // {
         //     id: 'nextjs-file-conventions',
         //     title: 'Nextjs File Conventions',
@@ -28,7 +36,7 @@ export async function GET(request: NextRequest) {
         //     createdAt: new Date().toISOString(),
         //     categories: ['Learning'],
         // },
-    ]
+    ].reverse();
 
     const selectedCategories = new Set(query);
     return Response.json(
