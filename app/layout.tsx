@@ -1,11 +1,11 @@
 import { AppRouterCacheProvider } from '@mui/material-nextjs/v13-appRouter';
-import theme from '../styles/theme.mui';
-import { ThemeProvider } from '@mui/material/styles';
-import NavBar from './components/NavBar/NavBar';
-import CssBaseline from '@mui/material/CssBaseline';
 import Container from '@mui/material/Container';
+import CssBaseline from '@mui/material/CssBaseline';
+import { ThemeProvider } from '@mui/material/styles';
+import theme from '../styles/theme.mui';
+import NavBar from './components/NavBar/NavBar';
 
-import type { Viewport } from 'next'
+import type { Metadata, Viewport } from 'next';
  
 export const viewport: Viewport = {
   width: 'device-width',
@@ -13,6 +13,14 @@ export const viewport: Viewport = {
   initialScale: 1,
   viewportFit: "contain",
 }
+
+export const metadata: Metadata = {
+  title: {
+    default: "Jack Kwok",
+    template: "%s - Jack Kwok"
+  },
+  description: "Hi, I am Jack Kwok. Come in and try to navigate around. I hope the website can brings you some insights."
+};
 
 export default function RootLayout({
   children,
