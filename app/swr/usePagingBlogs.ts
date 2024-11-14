@@ -11,7 +11,7 @@ const fetcher = async (
     [url, pageIndex, pageSize, selectedCategories]: [string, number, string, string[]]
 ) => {
     const res = await axios.get(url, {
-        // params: { selectedCategories: selectedCategories, pageIndex, pageSize },
+        params: { selectedCategories: selectedCategories, pageIndex, pageSize },
         paramsSerializer: { indexes: null }
     });
     return res.data;
