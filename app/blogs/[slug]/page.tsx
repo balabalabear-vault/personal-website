@@ -11,6 +11,15 @@ type Params = {
     }>;
 };
 
+export const dynamicParams = false;
+
+export async function generateStaticParams() {
+    const files = await fs.readdir(process.cwd() + '/app/data/blog');
+    return files
+        .filter((file) => file.endsWith('.mdx'))
+        .map((file) => ({ slug: file.replace(/\.mdx$/, '') }));
+}
+
 export async function generateMetadata(props: Params) {
     const params = await props.params;
     return { title: `Post: ${params.slug}` };

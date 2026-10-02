@@ -27,4 +27,3 @@ export default function ProjectListLayer({
         </Box>
     )
 }
-export const dynamic = 'force-dynamic';

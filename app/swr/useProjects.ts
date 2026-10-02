@@ -1,19 +1,13 @@
-import axios from 'axios';
-import useSWR from 'swr';
+import { useMemo } from 'react';
+import { projects } from '../lib/projects';
 
-const fetcher = async (url: string, selectedCategories: string[]) => {
-    const res = await axios.get(url, { params: selectedCategories });
-    return res.data;
-}
+export default function useProjects(selectedCategories: string[]) {
+    const filteredProjects = useMemo(() => {
+        const selectedCategoriesSet = new Set(selectedCategories);
+        return projects.filter((project) => (
+            project.categories.some((category) => selectedCategoriesSet.has(category))
+        ));
+    }, [selectedCategories]);
 
-export default function useBlogs(selectedCategories: string[]) {
-    const { data, error, isLoading } = useSWR(
-        ["/api/projects", selectedCategories],
-        ([url, categories]) => fetcher(url, categories)
-    )
-    return {
-        projects: data,
-        isLoading,
-        isError: error
-    }
+    return { projects: filteredProjects };
 }

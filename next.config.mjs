@@ -7,8 +7,10 @@ import remarkGfm from 'remark-gfm'
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   /* config options here */
-  output: 'standalone',
+  output: 'export',
   images: {
+    // No image optimization server in a static export
+    unoptimized: true,
     remotePatterns: [
       {
         protocol: 'https',

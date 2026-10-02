@@ -1,7 +1,6 @@
 'use client';
 import { useState } from "react";
 import CategoryLayer from "../components/CategoryLayer/CategoryLayer";
-import JLoading from "../components/JLoading/JLoading";
 import useProjects from "../swr/useProjects";
 import ProjectListLayer from "./ProjectListLayer";
 
@@ -15,9 +14,8 @@ export default function Content({
     clickable,
 }: Readonly<TContent>) {
     const [selected, setSelected] = useState<string[]>(categories);
-    const { projects, isLoading } = useProjects(selected);
+    const { projects } = useProjects(selected);
 
-    if(isLoading) return <JLoading />
     return (
         <>
             <CategoryLayer

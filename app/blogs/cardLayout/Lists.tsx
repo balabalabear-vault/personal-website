@@ -3,7 +3,7 @@ import { Paper, Stack, styled, Typography } from "@mui/material";
 import Grid from "@mui/material/Grid2";
 import { DateTime } from "luxon";
 import { useRouter } from "next/navigation";
-import { TBlog } from "../../api/posts/route";
+import { TBlog } from "../../lib/posts";
 import CategoryLayer from "../../components/CategoryLayer/CategoryLayer";
 import JBox from "../../components/JBox/JBox";
 import JEmptyList from "../../components/JEmptyList/JEmptyList";

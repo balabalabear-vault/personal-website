@@ -16,6 +16,15 @@ type Params = {
     }>;
 };
 
+export const dynamicParams = false;
+
+export async function generateStaticParams() {
+    const files = await fs.readdir(process.cwd() + '/app/data/project');
+    return files
+        .filter((file) => file.endsWith('.json'))
+        .map((file) => ({ slug: file.replace(/\.json$/, '') }));
+}
+
 export async function generateMetadata({ params }: Params) {
     const { slug } = await params;
     return { title: `Work Experience in ${slug}` };

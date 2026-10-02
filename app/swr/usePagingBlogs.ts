@@ -1,42 +1,27 @@
-import axios, { AxiosError } from 'axios';
-import useSWRInfinite from 'swr/infinite';
-import { TBlog } from '../api/posts/route';
+import { useMemo } from 'react';
+import { blogs, TBlog } from '../lib/posts';
 
 type TReturningData = {
     data: TBlog[],
     length: number
 }
 
-const fetcher = async (
-    [url, pageIndex, pageSize, selectedCategories]: [string, number, string, string[]]
-) => {
-    const res = await axios.get(url, {
-        params: { selectedCategories: selectedCategories, pageIndex, pageSize },
-        paramsSerializer: { indexes: null }
-    });
-    return res.data;
-}
-
 export default function usePagingBlogs(pageSize: number, selectedCategories: string[]) {
-    const { data, isLoading, error, size, setSize } = useSWRInfinite<TReturningData, AxiosError>(
-        (pageIndex, previousPageData) => {
-            if (previousPageData){
-                const totalLength = previousPageData.length;
-                const currentLength = (pageIndex + 1) * pageSize;
-                if(currentLength >= (totalLength + pageSize)) return null;
-            }
-            return [`/api/posts`, pageIndex, pageSize, selectedCategories];
-        },
-        fetcher,
-        {
-            revalidateAll: false
+    const data = useMemo(() => {
+        const selectedCategoriesSet = new Set(selectedCategories);
+        const filteredBlog = blogs.filter((blog) => (
+            blog.categories.some((category) => selectedCategoriesSet.has(category))
+        )).reverse();
+
+        const pages: TReturningData[] = [];
+        for (let i = 0; i < Math.max(filteredBlog.length, 1); i += pageSize) {
+            pages.push({
+                data: filteredBlog.slice(i, i + pageSize),
+                length: filteredBlog.length
+            });
         }
-    )
-    return ({
-        data,
-        isLoading,
-        isError: error,
-        size,
-        setSize
-    })
+        return pages;
+    }, [pageSize, selectedCategories]);
+
+    return { data };
 }

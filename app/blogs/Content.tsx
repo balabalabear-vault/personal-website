@@ -9,7 +9,6 @@ import Stack from "@mui/material/Stack";
 import Typography from "@mui/material/Typography";
 import { useMemo, useState } from "react";
 import CategoryLayer from "../components/CategoryLayer/CategoryLayer";
-import JLoading from "../components/JLoading/JLoading";
 import usePagingBlogs from "../swr/usePagingBlogs";
 import Lists from "./cardLayout/Lists";
 
@@ -36,23 +35,11 @@ export default function Content({
         setCurrentPage(DEFAULT_PAGE);
     }
 
-    const {
-        data,
-        isLoading,
-        isError,
-        size,
-        setSize
-    } = usePagingBlogs(parseInt(pageSize), selected);
+    const { data } = usePagingBlogs(parseInt(pageSize), selected);
 
-    const pageCount = useMemo(() => {
-        if (!data) return 0;
-        return Math.ceil(data[0].length / parseInt(pageSize));
-    }, [data, pageSize])
-
-    if (isLoading) return <JLoading />
-    if (isError || !data) {
-        throw Error();
-    }
+    const pageCount = useMemo(() => (
+        Math.ceil(data[0].length / parseInt(pageSize))
+    ), [data, pageSize])
 
     return (
         <Stack direction="column" sx={{ height: '100%' }}>
@@ -86,10 +73,8 @@ export default function Content({
                 <Pagination
                     count={pageCount}
                     variant="outlined"
-                    onChange={(e: React.ChangeEvent<unknown>, v: number) => {
-                        setCurrentPage(v);
-                        setSize(size + 1)
-                    }}
+                    page={currentPage}
+                    onChange={(e: React.ChangeEvent<unknown>, v: number) => setCurrentPage(v)}
                 />
             </Stack>
         </Stack>
